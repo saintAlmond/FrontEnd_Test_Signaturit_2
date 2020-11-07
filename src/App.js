@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import postList from "./data";
+import AddPostForm from "./components/forms/AddPostForm";
+import DetailPost from "./DetailPost";
 
-function App() {
+const App = () => {
+
+  const [posts, setPosts] = useState(postList);
+
+  const addPost = (post) => {
+    post.id = post.length + 1;
+    setPosts([...posts, post]);
+  };
+
+  const [currentPost, setCurrentPost] = useState(initialPost);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+       <h1>React CRUD App</h1>
+       
+       <div>
+            <h2>Add Post</h2>
+            <AddPostForm addPost={addPost} />
+        </div>
+        
     </div>
   );
-}
+};
 
 export default App;
