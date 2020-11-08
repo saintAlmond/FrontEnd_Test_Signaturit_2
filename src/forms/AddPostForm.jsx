@@ -10,24 +10,23 @@ const AddPostForm = (props) => {
 
     const [post, setPost] = useState(initPost);
 
-    const handleChange = e => {
-        const {title, value} = e.target;
-        setPost({...post, [title]: value});
+    const handleChange = (value, key) => {
+        setPost( {...post, [key]: value});
     }
+
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (post.title && post.date) {
-           handleChange(e, props.addPost(post));
-        }
+        props.addPost(post);
+        setPost(initPost);
     }
 
     return (
         <form>
             <label>Title</label>
-            <input className="u-full-width" type="text" value={post.title} name="title" onChange={handleChange} />
+            <input className="u-full-width" type="text" value={post.title} name="title" onChange={(e) => handleChange(e.target.value, "title")} />
             <label>Date</label>
-            <input className="u-full-width" type="text" value={post.date} name="date" onChange={handleChange} />
+            <input className="u-full-width" type="text" value={post.date} name="date" onChange={(e) => handleChange(e.target.value, "date")} />
             <button className="button-primary" type="submit" onClick={handleSubmit} >Add Post</button>
         </form>
     )

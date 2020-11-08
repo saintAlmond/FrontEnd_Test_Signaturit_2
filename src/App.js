@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import postList from './data';
 import './App.css';
 import PostTable from './tables/PostTable';
 import AddPostForm from './forms/AddPostForm';
 import EditPostForm from "./forms/EditPostForm";
+import PostDetails from './pages/PostDetails';
 
 const App = () => {
 
   const [ posts, setPosts ] = useState(postList);
 
   const addPost = post => {
-    post.id = post.length + 1;
-    setPosts([...posts, post]);
+    post.id = posts.length + 1;
+    setPosts( [...posts, post]);
   }
 
   const deletePost = (id) => {
@@ -39,6 +42,9 @@ const App = () => {
     setCurrentPost(initialPost);
     setEditing(false);
   }
+  const DetailsPost = () => {
+    
+  }
 
   return (
     <div className="container">
@@ -64,6 +70,9 @@ const App = () => {
         <div className="ten columns">
           <h2>View Post</h2>
           <PostTable posts={posts} deletePost={deletePost} editPost={editPost} />
+          <BrowserRouter>
+          <Route path="/postdetails" component={PostDetails} />
+          </BrowserRouter>
         </div>
       </div>
   </div>

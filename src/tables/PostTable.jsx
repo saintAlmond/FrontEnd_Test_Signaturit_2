@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 const PostTable = (props) => {
+    
     return(
         <table>
             <thead>
@@ -23,6 +25,8 @@ const PostTable = (props) => {
                                 <td>
                                     <button className="button-primary" onClick={() => props.deletePost(id)}>Delete</button>
                                     <button className="button-primary" onClick = {() => props.editPost (id, post)}>Edit</button>
+                                    <button className= "button-primary">Details</button>
+                                    
                                 </td>
                             </tr>
                         )
