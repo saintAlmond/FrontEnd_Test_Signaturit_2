@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 const AddPostForm = (props) => {
 
@@ -6,9 +6,9 @@ const AddPostForm = (props) => {
         id: null,
         title: '',
         date: ''
-    };
+    }
 
-    const [ post, setPost ] =  useState = (initPost);
+    const [post, setPost] = useState(initPost);
 
     const handleChange = e => {
         const {title, value} = e.target;
@@ -18,7 +18,7 @@ const AddPostForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (post.title && post.date) {
-            handleChange(e, props.addPost(post));
+           handleChange(e, props.addPost(post));
         }
     }
 
@@ -30,8 +30,6 @@ const AddPostForm = (props) => {
             <input className="u-full-width" type="text" value={post.date} name="date" onChange={handleChange} />
             <button className="button-primary" type="submit" onClick={handleSubmit} >Add Post</button>
         </form>
-    );
-};
-
+    )
+}
 export default AddPostForm;
-

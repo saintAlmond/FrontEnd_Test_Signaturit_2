@@ -1,0 +1,17 @@
+.column, .columns {
+    margin-left: 0; 
+}
+input {
+    margin-right: 20px;
+}
+.button .button-primary, input {
+    display: block;
+}
+.button, button {
+    margin-bottom: 1rem;
+    margin-right: 10px;
+}
+.u-full-width {
+    width: 50%;
+    box-sizing: border-box;
+}

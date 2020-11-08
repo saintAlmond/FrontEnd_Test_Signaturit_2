@@ -1,13 +1,18 @@
 const postList = [
     {
-        id: 0,
-        title: 'Lord of Rings',
-        date: '12/23/1998'
+        id: 1,
+        title: 'MessiLionel',
+        date: '06/24/1987'
     },
     {
-        id: 1,
-        title: 'King of Lion',
-        date: '09/09/1995'
+        id: 2,
+        title: 'SuarezLuis',
+        date: '01/24/1987'
+    },
+    {
+        id:3,
+        title: 'Koke',
+        date: '01/08/1992'
     }
 ];
 
