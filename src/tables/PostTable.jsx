@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 
 
 const PostTable = (props) => {
+
+    const [pagination, setPagination] = useState(1);
     
     return(
         <table>
@@ -25,8 +28,7 @@ const PostTable = (props) => {
                                 <td>
                                     <button className="button-primary" onClick={() => props.deletePost(id)}>Delete</button>
                                     <button className="button-primary" onClick = {() => props.editPost (id, post)}>Edit</button>
-                                    <button className= "button-primary">Details</button>
-                                    
+                                    <button className= "button-primary">Details</button> 
                                 </td>
                             </tr>
                         )

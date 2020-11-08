@@ -1,17 +1,14 @@
 import React, {useState} from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
 import postList from './data';
 import './App.css';
 import PostTable from './tables/PostTable';
 import AddPostForm from './forms/AddPostForm';
 import EditPostForm from "./forms/EditPostForm";
-import PostDetails from './pages/PostDetails';
 
 const App = () => {
 
   const [ posts, setPosts ] = useState(postList);
-
+  
   const addPost = post => {
     post.id = posts.length + 1;
     setPosts( [...posts, post]);
@@ -42,39 +39,34 @@ const App = () => {
     setCurrentPost(initialPost);
     setEditing(false);
   }
-  const DetailsPost = () => {
-    
-  }
+
 
   return (
     <div className="container">
-<h1>React CRUD App</h1>
-      <div className="row">
-        <div className="twelve columns">
-          { editing ? (
-            <div>
-              <h2>Edit Post</h2>
-              <EditPostForm 
-                currentPost={currentPost}
-                setEditing={setEditing}
-                updatePost={updatePost}
-              />
-            </div>
-          ) : (
-            <div>
-              <h2>Add post</h2>
-              <AddPostForm addPost={addPost} />
-            </div>
-          )}
+      <h1>React CRUD App</h1>
+        <div className="row">
+          <div className="ten columns">
+            <h2>View Post</h2>
+            <PostTable posts={posts} deletePost={deletePost} editPost={editPost} />
+          </div>
+          <div className="twelve columns">
+            { editing ? (
+              <div>
+                <h2>Edit Post</h2>
+                <EditPostForm 
+                  currentPost={currentPost}
+                  setEditing={setEditing}
+                  updatePost={updatePost}
+                />
+              </div>
+            ) : (
+              <div>
+                <h2>Add post</h2>
+                <AddPostForm addPost={addPost} />
+              </div>
+            )}
+          </div>
         </div>
-        <div className="ten columns">
-          <h2>View Post</h2>
-          <PostTable posts={posts} deletePost={deletePost} editPost={editPost} />
-          <BrowserRouter>
-          <Route path="/postdetails" component={PostDetails} />
-          </BrowserRouter>
-        </div>
-      </div>
   </div>
   );
 };
