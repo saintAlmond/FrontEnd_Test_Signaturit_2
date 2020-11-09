@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
+//import Pagination from '../components/Pagination';
 
 
 const PostTable = (props) => {
 
+    const history = useHistory();
+    console.log(useHistory);
+
+    const redirect = () => {
+        history.push("/details");
+    } 
+
+    console.log(props);
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(2);
+    const [postsPerPage] = useState(8);
  // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = props.posts.slice(indexOfFirstPost, indexOfLastPost);
+    console.log(currentPage);
     const totalPosts = props.posts.length;
   // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -28,6 +39,7 @@ const PostTable = (props) => {
                 { totalPosts > 0 ? (
                     currentPosts.map(currentPosts => {
                         const {id, title, date} = currentPosts;
+                        console.log(currentPosts);
                         return (
                             <tr>
                                 <td>{id}</td>
@@ -36,9 +48,8 @@ const PostTable = (props) => {
                                 <td>
                                     <button className="button-primary" onClick={() => props.deletePost(id)}>Delete</button>
                                     <button className="button-primary" onClick = {() => props.editPost (id, currentPosts)}>Edit</button>
-                                    <button className= "button-primary">Details</button> 
+                                    <button className= "button-primary" onClick = {redirect}>Details</button> 
                                 </td>
-            
                             </tr>    
                         )
                     })
