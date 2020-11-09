@@ -16,7 +16,7 @@ const Home = () => {
     post.id = posts.length + 1;
     setPosts( [...posts, post]);
   }
-  console.log(post);
+
 
   const deletePost = (id) => {
     setPosts(posts.filter((post) => post.id !== id));
