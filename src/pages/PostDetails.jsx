@@ -5,11 +5,11 @@ const PostDetails = ({currentPosts}) => {
 
     return (
         <div className="item-details">
-            {currentPosts.map(currentPosts => {
-                const {id, title, date} = currentPosts;
-                console.log(map);
-            }
-            )}
+            {currentPosts.map(post => {
+                const { id, title,  date } = post;  
+                return (<p>{title} / {date} / {id}</p>);
+            })
+            };
         </div>
 
     )
