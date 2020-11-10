@@ -1,30 +1,26 @@
 import React from 'react';
+import {useParams} from 'react-router-dom'
 //import { CardView } from 'react-card-with-image'
 import postList from '../data';
 //import 'react-card-with-image/dist/index.css'
 
 const PostDetails = (props) => {
 
-    const currentPosts = [postList];
+    const PostId = () => {
+        const { id  } = useParams();
+        return <p>{id}</p>;
+      }
 
-
-    {currentPosts.map(post => {
-        console.log(post);
-        const { id, title,  date } = post;  
-        return (<p>{title} / {date} / {id}</p>);
-        
-    })
-    }
    
     return (
-        <div className="w3-container">
-            <h2>Post Cards</h2>
-            {/* <CardView */}
-            
-        
-            
-        </div>
-
+        <>
+            {postList.map(post => {
+                const { id, title,  date } = post; 
+                console.log(post); 
+                return (<p>{title} / {date} / {id}</p>); 
+            })
+            }
+        </>
     )
 }
 

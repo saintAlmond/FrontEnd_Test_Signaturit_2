@@ -8,7 +8,9 @@ const App = () => {
     <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} /> 
-          <Route path="/details" exact component={PostDetails} /> 
+          <Route path="posts/id">
+            <PostDetails />
+          </Route>
         </Switch>
     </BrowserRouter>
   )

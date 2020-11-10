@@ -9,7 +9,10 @@ const PostTable = (props) => {
     console.log(useHistory);
 
     const redirect = () => {
-        history.push("/details");
+        history.push({
+            pathname: "/details",
+            search: "id=${id}",
+        });
     } 
 
     console.log(props);
@@ -48,7 +51,7 @@ const PostTable = (props) => {
                                 <td>
                                     <button className="button-primary" onClick={() => props.deletePost(id)}>Delete</button>
                                     <button className="button-primary" onClick = {() => props.editPost (id, currentPosts)}>Edit</button>
-                                    <button className= "button-primary" onClick = {redirect}>Details</button> 
+                                    <button className= "button-primary" onClick = {() => redirect(id) }>Details</button> 
                                 </td>
                             </tr>    
                         )
