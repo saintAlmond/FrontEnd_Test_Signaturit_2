@@ -29,3 +29,19 @@
   border-radius: 4px;
   cursor: pointer;
 }
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+}
+p {
+  margin-left: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.w3-container {
+  display: block;
+  width: 400px;
+  border-radius: 3px;
+}
+.w3-card {
+  width: 400px;
+  border-radius: 3px;
+}

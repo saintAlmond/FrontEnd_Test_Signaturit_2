@@ -12,18 +12,21 @@ const Home = () => {
   const [ posts, setPosts ] = useState(postList);
   console.log(posts);
   
+  //Add new post 
   const addPost = post => {
     post.id = posts.length + 1;
     setPosts( [...posts, post]);
   }
 
-
+  //delte the post
   const deletePost = (id) => {
     setPosts(posts.filter((post) => post.id !== id));
   }
 
+  //states editing post
   const [editing, setEditing] = useState(false);
 
+  //post must have got
   const initialPost = {
     id: null,
     title: '',
@@ -32,10 +35,12 @@ const Home = () => {
 
   const [currentPost, setCurrentPost] = useState(initialPost);
 
+  //editng post by id
   const editPost = (id, post) => {
     setEditing(true);
     setCurrentPost(post);
   }
+  //update post and create newpost
   const updatePost = (newPost) => {
     setPosts(
       posts.map((post) => (post.id === currentPost.id ? newPost : post))

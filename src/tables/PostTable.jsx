@@ -8,10 +8,10 @@ const PostTable = (props) => {
     const history = useHistory();
     console.log(useHistory);
 
-    const redirect = () => {
+    const redirect = (id) => {
         history.push({
             pathname: "/details",
-            search: "id=${id}",
+            state: { id },
         });
     } 
 
@@ -23,10 +23,10 @@ const PostTable = (props) => {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = props.posts.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(currentPage);
+    //console.log(currentPage);
     const totalPosts = props.posts.length;
   // Change page
-    const paginate = pageNumber => setCurrentPage(pageNumber);
+    //const paginate = pageNumber => setCurrentPage(pageNumber);
     
     return(
         <table>
@@ -42,7 +42,6 @@ const PostTable = (props) => {
                 { totalPosts > 0 ? (
                     currentPosts.map(currentPosts => {
                         const {id, title, date} = currentPosts;
-                        console.log(currentPosts);
                         return (
                             <tr>
                                 <td>{id}</td>

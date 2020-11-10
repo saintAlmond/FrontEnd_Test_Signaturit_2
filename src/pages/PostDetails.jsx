@@ -1,26 +1,27 @@
 import React from 'react';
-import {useParams} from 'react-router-dom'
-//import { CardView } from 'react-card-with-image'
 import postList from '../data';
-//import 'react-card-with-image/dist/index.css'
 
-const PostDetails = (props) => {
+const PostDetails = ({ location }) => {
+  
+    const { state: { id } } = location; 
 
-    const PostId = () => {
-        const { id  } = useParams();
-        return <p>{id}</p>;
-      }
+    const postInfo = postList.find(post => post.id === id); 
 
-   
     return (
-        <>
-            {postList.map(post => {
-                const { id, title,  date } = post; 
-                console.log(post); 
-                return (<p>{title} / {date} / {id}</p>); 
-            })
-            }
-        </>
+        <div className="w3-container">
+            <h2>Detail Card</h2>
+            <div class="w3-card-4">
+                <header class="w3-container w3-blue">
+                    <h1>{postInfo.title}</h1>
+                </header>
+            </div>
+            <div className="w3-card">
+                <p>
+                   {postInfo.date}
+                   {postInfo.id}
+                </p>
+            </div>
+        </div>
     )
 }
 
